@@ -1,0 +1,63 @@
+Python编程规范
+
+
+缩排
+    1. 以4个空格为一个单位进行缩排，而不用tab键（vs2012里按回车自动缩排就是4个空格）
+    2. 如果有多个参数，需要另起一行的，与开括号对齐（vs2012里按回车自动实现）
+    3. 如果条件语句需要另起一行的，从开括号起再缩排一次，如下：
+       if (width == 0 and height == 0 and
+               color == 'red' and emphasis == 'strong' or
+               highlight > 100):
+           raise ValueError("sorry, you lose")
+    
+空行
+    1. 高层function与class定义之间空两行
+    2. Class里的方法之间空一行
+    3. 方法里根据逻辑空行
+    4. 可以用额外的空行将一组相关的functions突显出来
+
+Import
+    1. 按如下顺序import：
+           1） Standard library
+           2） Related third party
+           3） Local application/library specific
+    2. 用空行将以上三组隔开
+    3. 分别import，即：
+           import os
+           import sys
+       而不要：
+           import os,sys   
+
+注释
+    1. 行注释用#开头并且在#后空一格    # Like this
+    2. 块注释在每一行用#开头并且在#后空一格，可以用一个#独立成行作为段落分割
+       # We use a weighted dictionary search to find out where i is in
+       # the array.  We extrapolate position based on the largest num
+       # in the array and the array size and then do binary search to
+       # get the exact number.
+    3. 外部注释用"""Like this"""，如果有多行，后面的"""要另起一行
+       """Summary of class here.
+
+       Longer class information....
+       Longer class information....
+
+       Attributes:
+           likes_spam: A boolean indicating if we like SPAM or not.
+           eggs: An integer count of the eggs we have laid.
+       """
+
+命名
+    1. 包名和模块名：短的、全小写。模块名的词语之间可以用下划线_来提高可读性。
+    2. 类名：CapWords
+    3. 异常名：MyError
+    4. Function名：全小写，词之间可以用下划线，python里一般不用mixedCase，只在考虑到兼容以前版本时使用
+    5. 方法参数：对instance methods（methods that are called on an object），总是使用self作为第一个参数；
+                 对class methods（methods that are called on a class），总是使用cls作为第一个参数
+    6. Method名和instance变量：同Function命名。非公开的method和instance变量名在开头加下划线
+    7. 常量：MAX_OVERFLOW, TOTAL
+    
+括号：
+    1. 不要用在条件语句或返回语句中使用括号，除非是一行写不下才用括号括起来（见缩排的例子）
+
+类定义：
+    1. 显式地表明继承关系，如果没有专门继承的父类，也要表明由object继承而来，如：class SampleClass(object)
